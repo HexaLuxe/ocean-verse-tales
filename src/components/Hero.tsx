@@ -1,10 +1,46 @@
 import { Button } from "@/components/ui/button";
-import { BookOpen, Waves } from "lucide-react";
+import { BookOpen, Waves, LogIn, LogOut, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
 import heroOcean from "@/assets/hero-ocean.jpg";
 
 const Hero = () => {
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Auth buttons in top right */}
+      <div className="absolute top-4 right-4 z-30">
+        {user ? (
+          <div className="flex items-center gap-4">
+            <div className="text-primary-foreground bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-lg flex items-center gap-2">
+              <User className="w-4 h-4" />
+              <span className="text-sm">{user.email}</span>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={signOut}
+              className="bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Keluar
+            </Button>
+          </div>
+        ) : (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => navigate("/auth")}
+            className="bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20"
+          >
+            <LogIn className="w-4 h-4 mr-2" />
+            Masuk
+          </Button>
+        )}
+      </div>
+
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 z-0"
