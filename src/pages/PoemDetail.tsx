@@ -196,36 +196,41 @@ const PoemDetail = () => {
   }
 
   return (
-    <div className="min-h-screen gradient-ocean py-12 px-4">
+    <div className="min-h-screen gradient-ocean py-8 md:py-12 px-4">
       <div className="container mx-auto max-w-4xl">
         <Button
           variant="ghost"
           onClick={() => navigate("/")}
-          className="mb-6 text-primary-foreground hover:bg-primary-foreground/10"
+          className="mb-6 text-primary-foreground hover:bg-primary-foreground/10 min-h-[44px]"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Kembali
         </Button>
 
-        <Card className="bg-card/95 backdrop-blur-sm p-8 mb-8 shadow-elegant">
-          <div className="flex justify-between items-start mb-6">
-            <div>
-              <h1 className="text-4xl font-bold mb-2 text-card-foreground">
+        <Card className="bg-card/95 backdrop-blur-sm p-4 sm:p-6 md:p-8 mb-6 md:mb-8 shadow-elegant">
+          <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
+            <div className="flex-1">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 text-card-foreground">
                 {poem.title}
               </h1>
               <p className="text-muted-foreground italic">— {poem.author}</p>
             </div>
-            <Button variant="outline" size="icon" onClick={handleFavorite}>
+            <Button 
+              variant="outline" 
+              size="icon" 
+              onClick={handleFavorite}
+              className="min-h-[44px] min-w-[44px] shrink-0"
+            >
               <Heart
                 className={`w-5 h-5 ${isFavorite ? "fill-current text-red-500" : ""}`}
               />
             </Button>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2 md:space-y-3">
             {poem.lines.map((line, index) => (
               <p
                 key={index}
-                className="text-lg text-card-foreground/90 leading-relaxed font-display"
+                className="text-base sm:text-lg text-card-foreground/90 leading-relaxed font-display"
               >
                 {line}
               </p>
@@ -233,12 +238,12 @@ const PoemDetail = () => {
           </div>
         </Card>
 
-        <Card className="bg-card/95 backdrop-blur-sm p-8 shadow-elegant">
-          <h2 className="text-2xl font-bold mb-6 text-card-foreground">
+        <Card className="bg-card/95 backdrop-blur-sm p-4 sm:p-6 md:p-8 shadow-elegant">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-card-foreground">
             Komentar ({comments.length})
           </h2>
 
-          <form onSubmit={handleSubmitComment} className="mb-8">
+          <form onSubmit={handleSubmitComment} className="mb-6 sm:mb-8">
             <Textarea
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
@@ -248,34 +253,38 @@ const PoemDetail = () => {
                   : "Silakan masuk untuk berkomentar"
               }
               disabled={!user || submitting}
-              className="mb-4"
+              className="mb-4 min-h-[100px]"
               rows={4}
             />
-            <Button type="submit" disabled={!user || submitting || !newComment.trim()}>
+            <Button 
+              type="submit" 
+              disabled={!user || submitting || !newComment.trim()}
+              className="w-full sm:w-auto min-h-[44px]"
+            >
               {submitting ? "Mengirim..." : "Kirim Komentar"}
             </Button>
           </form>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {comments.length === 0 ? (
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-6 sm:py-8 text-sm sm:text-base">
                 Belum ada komentar. Jadilah yang pertama!
               </p>
             ) : (
               comments.map((comment) => (
-                <Card key={comment.id} className="p-4 bg-background/50">
-                  <div className="flex justify-between items-start mb-2">
-                    <p className="font-semibold text-card-foreground">
+                <Card key={comment.id} className="p-3 sm:p-4 bg-background/50">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 mb-2">
+                    <p className="font-semibold text-card-foreground text-sm sm:text-base">
                       {comment.profiles?.username || "Pengguna"}
                     </p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-muted-foreground whitespace-nowrap">
                       {formatDistanceToNow(new Date(comment.created_at), {
                         addSuffix: true,
                         locale: id,
                       })}
                     </p>
                   </div>
-                  <p className="text-card-foreground/90">{comment.content}</p>
+                  <p className="text-card-foreground/90 text-sm sm:text-base">{comment.content}</p>
                 </Card>
               ))
             )}

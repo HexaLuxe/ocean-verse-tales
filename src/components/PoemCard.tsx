@@ -84,13 +84,13 @@ export const PoemCard = ({ poem, isFavorite = false, onFavoriteToggle }: PoemCar
             </p>
           ))}
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <Button
             variant="outline"
             size="sm"
             onClick={handleFavorite}
             disabled={loading}
-            className="flex-1"
+            className="flex-1 min-h-[44px]"
           >
             <Heart
               className={`w-4 h-4 mr-2 ${isFavorite ? "fill-current text-red-500" : ""}`}
@@ -101,6 +101,7 @@ export const PoemCard = ({ poem, isFavorite = false, onFavoriteToggle }: PoemCar
             variant="outline"
             size="sm"
             onClick={() => navigate(`/poem/${poem.id}`)}
+            className="flex-1 min-h-[44px]"
           >
             <MessageCircle className="w-4 h-4 mr-2" />
             Komentar
