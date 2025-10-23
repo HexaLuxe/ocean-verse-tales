@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { BookOpen, Waves, LogIn, LogOut, User } from "lucide-react";
+import { BookOpen, Waves, LogIn, LogOut, User, Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import heroOcean from "@/assets/hero-ocean.jpg";
@@ -13,19 +13,28 @@ const Hero = () => {
       {/* Auth buttons in top right */}
       <div className="absolute top-4 right-4 z-30">
         {user ? (
-          <div className="flex items-center gap-4">
-            <div className="text-primary-foreground bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-lg flex items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="hidden md:flex text-primary-foreground bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-lg items-center gap-2">
               <User className="w-4 h-4" />
               <span className="text-sm">{user.email}</span>
             </div>
             <Button
               variant="outline"
               size="sm"
+              onClick={() => navigate("/favorites")}
+              className="bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20"
+            >
+              <Heart className="w-4 h-4 sm:mr-2" />
+              <span className="hidden sm:inline">Favorit</span>
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               onClick={signOut}
               className="bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20"
             >
-              <LogOut className="w-4 h-4 mr-2" />
-              Keluar
+              <LogOut className="w-4 h-4 sm:mr-2" />
+              <span className="hidden sm:inline">Keluar</span>
             </Button>
           </div>
         ) : (
