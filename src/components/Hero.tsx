@@ -35,8 +35,8 @@ const Hero = () => {
             onClick={() => navigate("/auth")}
             className="bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground border-primary-foreground/20 hover:bg-primary-foreground/20"
           >
-            <LogIn className="w-4 h-4 mr-2" />
-            Masuk
+            <LogIn className="w-4 h-4 sm:mr-2" />
+            <span className="hidden sm:inline">Masuk</span>
           </Button>
         )}
       </div>
