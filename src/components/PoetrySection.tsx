@@ -59,7 +59,7 @@ const PoetrySection = () => {
   };
 
   return (
-    <section className="py-24 px-4 gradient-ocean">
+    <section id="poetry-section" className="py-24 px-4 gradient-ocean">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16 animate-fade-in">
           <div className="flex justify-center mb-4">

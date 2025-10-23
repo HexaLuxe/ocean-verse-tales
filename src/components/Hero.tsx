@@ -86,6 +86,12 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="bg-accent hover:bg-accent/90 text-accent-foreground shadow-elegant transition-smooth"
+              onClick={() => {
+                document.getElementById('classic-novels')?.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
             >
               Mulai Membaca
             </Button>
@@ -93,6 +99,12 @@ const Hero = () => {
               size="lg" 
               variant="outline"
               className="bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20 transition-smooth"
+              onClick={() => {
+                document.getElementById('poetry-section')?.scrollIntoView({ 
+                  behavior: 'smooth',
+                  block: 'start'
+                });
+              }}
             >
               Koleksi Puisi
             </Button>

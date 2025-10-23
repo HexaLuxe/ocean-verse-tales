@@ -29,12 +29,54 @@ const novels = [
     description: "Petualangan bajak laut klasik mencari harta karun yang terkubur.",
     year: "1883",
     quote: "Fifteen men on the dead man's chest."
+  },
+  {
+    title: "The Odyssey",
+    author: "Homer",
+    description: "Epik kuno tentang perjalanan Odysseus pulang ke rumah melintasi laut berbahaya.",
+    year: "~800 SM",
+    quote: "The wine-dark sea."
+  },
+  {
+    title: "Lord Jim",
+    author: "Joseph Conrad",
+    description: "Kisah tentang kehormatan, pengkhianatan, dan penebusan seorang pelaut muda.",
+    year: "1900",
+    quote: "He was one of us."
+  },
+  {
+    title: "The Sea-Wolf",
+    author: "Jack London",
+    description: "Petualangan brutal di atas kapal anjing laut dengan kapten yang kejam.",
+    year: "1904",
+    quote: "The sailor is frankness, the landsman is finesse."
+  },
+  {
+    title: "Captains Courageous",
+    author: "Rudyard Kipling",
+    description: "Kisah transformasi seorang anak kaya yang jatuh dari kapal mewah.",
+    year: "1897",
+    quote: "We're all bound to be here together."
+  },
+  {
+    title: "Two Years Before the Mast",
+    author: "Richard Henry Dana Jr.",
+    description: "Memoar otentik kehidupan keras seorang pelaut di abad ke-19.",
+    year: "1840",
+    quote: "Nothing will do in seafaring but to carry everything with a high hand."
+  },
+  {
+    title: "The Riddle of the Sands",
+    author: "Erskine Childers",
+    description: "Novel spionase maritim yang menegangkan di perairan Jerman.",
+    year: "1903",
+    quote: "The sea was mother-naked."
   }
 ];
 
 const ClassicNovels = () => {
   return (
-    <section className="py-24 px-4 bg-gradient-paper">
+    <section id="classic-novels" className="py-24 px-4 bg-gradient-paper">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16 animate-fade-in">
           <div className="flex justify-center mb-4">
